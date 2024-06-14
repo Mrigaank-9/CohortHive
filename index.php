@@ -8,20 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-    <!-- Header -->
-    <header class="bg-dark text-white py-3 mb-5">
-    <div class="container d-flex justify-content-between align-items-center">
-        <h1 class="mb-0">Collab Hub</h1>
-        <nav class="d-flex align-items-center">
-            <a href="#" class="nav-link text-white me-3">Home</a>
-            <a href="#" class="nav-link text-white me-3">Features</a>
-            <a href="#" class="nav-link text-white me-3">Contact</a>
-            <a href="#" class="btn btn-outline-light ms-3 me-2">Sign In</a>
-            <a href="#" class="btn btn-primary ms-2">Sign Up</a>
-        </nav>
-    </div>
-</header>
 
+  <!-- header -->
+   <?php require_once "components/header.php"; ?>
 
     <!-- Main content -->
     <div class="blur"></div>
@@ -29,7 +18,7 @@
     <div class="container">
         <div class="startSec">
             <div class="intro">
-                <div class="title">Collab Hub</div>
+                <div class="title">Cohort Hive</div>
                 <p class="subTitle">Where Developers Unite and Innovate Together</p>
             </div>
             <div class="meeting">
@@ -70,66 +59,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center text-lg-start mt-5">
-        <div class="container p-4">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">About Collab Hub</h5>
-                    <p>
-                        Collab Hub is where developers unite and innovate together. Join us to create, share, and collaborate on exciting projects.
-                    </p>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Quick Links</h5>
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <a href="#" class="text-white text-decoration-none">Home</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-white text-decoration-none">Features</a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-white text-decoration-none">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Follow Us</h5>
-                    <ul class="list-unstyled d-flex justify-content-center">
-                        <li>
-                            <a href="#" class="text-white text-decoration-none me-3"><i class="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-white text-decoration-none me-3"><i class="fab fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-white text-decoration-none me-3"><i class="fab fa-linkedin-in"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-white text-decoration-none"><i class="fab fa-github"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Contact Us</h5>
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <i class="fas fa-envelope me-2"></i> info@collabhub.com
-                        </li>
-                        <li>
-                            <i class="fas fa-phone me-2"></i> +1 234 567 890
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt me-2"></i> 123 Developer Lane, Tech City, USA
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="text-center p-3 bg-secondary">
-            © 2024 Collab Hub
-        </div>
-    </footer>
+    <?php require_once "components/footer.php"; ?>
 
     <!-- Include FontAwesome for social media icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
