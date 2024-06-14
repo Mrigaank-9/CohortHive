@@ -14,7 +14,7 @@
         
         <div class="startSec">
             <div class="intro">
-                <div class="title">COLLAB HUB</div>
+                <div class="title">CohortHive</div>
                 <p class="subTitle">Where Developers Unite and Innovate Together</p>
             </div>
             <div class="meeting">
@@ -25,6 +25,7 @@
             </div>
         </div>
         <div class="createMsg meeting hide">
+            <button class="close-btn">&times;</button>
             <form>
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Room Name</label>
@@ -39,6 +40,7 @@
               </form>
         </div>
         <div class="joinMsg meeting hide">
+            <button class="close-btn">&times;</button>
             <form>
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Room Name</label>

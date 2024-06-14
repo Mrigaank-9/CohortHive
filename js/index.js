@@ -24,4 +24,11 @@ join.addEventListener("click", ()=>{
     console.log("Join a room button was clicked")
     showJoinForm();
 });
+document.querySelectorAll('.close-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.target.closest('.meeting').classList.add('hide');
+        startSec.classList.remove("blur");
+
+    });
+ });
 
