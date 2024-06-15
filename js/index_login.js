@@ -9,12 +9,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function openPopup(popup) {
         popup.classList.remove('hide');
         blurBackground.classList.remove('hide');
+        blurBackground.style.display = 'block';
     }
 
     function closePopup() {
         signInPopup.classList.add('hide');
         signUpPopup.classList.add('hide');
         blurBackground.classList.add('hide');
+        blurBackground.style.display = 'none';
     }
 
     signInBtn.addEventListener('click', () => openPopup(signInPopup));
