@@ -28,9 +28,9 @@
                 <button class="btn btn-outline-secondary btn-lg btn-dark create" style="--bs-btn-font-size: 1.5rem; --bs-btn-color: white">Create a Room</button>
                 <span class="midEle">or</span>
                 <button class="btn btn-outline-secondary btn-lg btn-dark join" style="--bs-btn-font-size: 1.5rem; --bs-btn-color: white">Join a Room</button>
-            </div>
+            </div> 
         </div>
-        <div class="createMsg meeting hide">
+        <div id="createfromid" class="createMsg form hide">
             <button class="close-btn">&times;</button>
             <form method="POST">
                 <div class="mb-3">
@@ -49,7 +49,7 @@
             </form>
         </div>
 
-        <div class="joinMsg meeting hide">
+        <div class="joinMsg form hide">
             <button class="close-btn">&times;</button>
             <form>
                 <div class="mb-3">
@@ -63,7 +63,36 @@
                 <button type="submit" class="btn btn-outline-secondary btn-lg btn-dark" style="--bs-btn-font-size: 1.1rem; --bs-btn-color: white">Submit</button>
             </form>
         </div>
-        <div class="historySec"></div>
+        <div class="historySec">
+          <div class="history">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Room No.</th>
+                  <th scope="col">Room Name</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Rajeev's Room</td>
+                  <td><a href="#" class="actionLink">Join</a></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Mrigaank's Room</td>
+                  <td><a href="#" class="actionLink">Join</a></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td >Saket's Room</td>
+                  <td><a href="#" class="actionLink">Join</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
     </div>
     <?php 
     // Include footer
@@ -77,3 +106,6 @@
     <script src="js/index_login.js"></script>
 </body>
 </html>
+
+
+
