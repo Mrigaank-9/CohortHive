@@ -2,9 +2,9 @@
     <div class="container p-5">
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">About Collab Hub</h5>
+                <h5 class="text-uppercase">About Cohort Hive</h5>
                 <p>
-                    Collab Hub is where developers unite and innovate together. Join us to create, share, and collaborate on exciting projects.
+                Cohort Hive is where developers unite and innovate together. Join us to create, share, and collaborate on exciting projects.
                 </p>
             </div>
             <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
