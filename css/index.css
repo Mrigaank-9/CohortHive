@@ -3,15 +3,12 @@ body{
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     
 }
 .blur{
     filter: blur(1.1rem);
 }
-.no-vertical-scroll {
-    overflow-y: hidden;
-}
+
 .startSec{
     display: flex;
     padding-top: 30px;
@@ -31,26 +28,6 @@ body{
 .midEle{
     align-self: center;
     cursor:default;
-}
-.form{
-    margin-top: 100px;
-    justify-content: center;
-    padding-top: 100px;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    justify-content: space-evenly;
-    height: 300px;
-    padding: 35px;
-    border: 1px solid rgba(255, 255, 255, .25);
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.45);
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(12px);
-}
-#createfromid{
-    height: 400px;
 }
 .meeting{
     margin-top: 100px;
@@ -94,29 +71,4 @@ body{
     font-weight: bold;
     color: #000;
     cursor: pointer;
-}
-.history{
-    margin-top: 100px;
-    justify-content: center;
-    padding-top: 100px;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    width: 700px;
-    justify-content: space-evenly;
-    height: 300px;
-    padding: 35px;
-    border: 1px solid rgba(255, 255, 255, .25);
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.45);
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(12px);
-    cursor: default;
-
-}
-.actionLink{
-    text-decoration: none;
-}
-.historySec{
-    padding-bottom: 50px;
 }
