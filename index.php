@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collab Hub</title>
+    <title>Cohort Hive</title>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/index_login.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-
-  <!-- header -->
-   <?php require_once "components/header.php"; ?>
+    <?php 
+    // Include header
+    include 'components/header.php';
+    ?>
 
     <!-- Main content -->
-    <div class="blur"></div>
-    <div class="noBlur"></div>
     <div class="container">
         <div class="startSec">
             <div class="intro">
@@ -58,14 +56,15 @@
         </div>
         <div class="historySec"></div>
     </div>
+    <?php 
+    // Include footer
+    include 'components/footer.php';
+    ?>
 
-    <!-- Footer -->
-    <?php require_once "components/footer.php"; ?>
-
-    <!-- Include FontAwesome for social media icons -->
+    <!-- Other scripts -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="js/index.js"></script>
-    <script src="index_login.js"></script>
+    <!-- <script src="js/index_login.js"></script> -->
 </body>
 </html>
