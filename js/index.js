@@ -3,6 +3,19 @@ let join= document.querySelector(".join");
 let createForm= document.querySelector(".createMsg");
 let joinForm= document.querySelector(".joinMsg");
 let startSec= document.querySelector(".startSec");
+let body= document.querySelector("body");
+
+
+// Function to disable horizontal scrolling
+function disableHorizontalScroll() {
+    body.classList.add('no-vertical-scroll');
+}
+  
+  // Function to enable horizontal scrolling
+function enableHorizontalScroll() {
+    body.classList.remove('no-vertical-scroll');
+}
+
 
 const showCreateForm= ()=> {
     console.log("Inside Create form!");
@@ -18,17 +31,22 @@ const showJoinForm= ()=> {
 create.addEventListener("click", ()=>{
     console.log("Create a room button was clicked")
     showCreateForm();
+    disableHorizontalScroll();
 });
 
 join.addEventListener("click", ()=>{
     console.log("Join a room button was clicked")
     showJoinForm();
+    disableHorizontalScroll();
 });
+
+
+
 document.querySelectorAll('.close-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-        e.target.closest('.meeting').classList.add('hide');
+        e.target.closest('.form').classList.add('hide');
         startSec.classList.remove("blur");
-
+        enableHorizontalScroll();
     });
  });
 
