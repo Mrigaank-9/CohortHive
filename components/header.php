@@ -1,5 +1,5 @@
 <!-- components/header.php -->
-<link rel="stylesheet" href="css/index_login.css">
+
 <header class="bg-dark text-white py-3 mb-5">
     <div class="container d-flex justify-content-between align-items-center">
         <h1 class="mb-0">Cohort Hive</h1>
@@ -51,4 +51,4 @@
 
 <!-- Background Blur -->
 <div id="blurBackground" class="blur hide"></div>
-<script src="js/index_login.js"></script>
+
