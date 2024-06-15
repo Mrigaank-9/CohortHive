@@ -18,12 +18,14 @@ function enableHorizontalScroll() {
 
 
 const showCreateForm= ()=> {
+    window.scroll({ top: 80, left: 0, behavior: 'smooth' });
     console.log("Inside Create form!");
     createForm.classList.remove("hide");
     startSec.classList.add("blur");
 };
 
 const showJoinForm= ()=> {
+    window.scroll({ top: 80, left: 0, behavior: 'smooth' });
     console.log("Inside Join form!");
     joinForm.classList.remove("hide");
     startSec.classList.add("blur");
