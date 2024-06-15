@@ -2,7 +2,7 @@
 
 define('DB_Server','localhost');
 define('DB_Username','root');
-define('Password',"");
+define('DB_Password',"");
 define('DB_Name','CohortHive');
 
 $conn=mysqli_connect(DB_Server,DB_Username,DB_Password,DB_Name);
@@ -16,7 +16,7 @@ function create_unique_id(){
     $str="";
     $characters_length=strlen($characters);
     for($i=0;$i<20;$i++){
-        $str.=$characters[mt_rand(0,$character_length-1)];
+        $str.=$characters[mt_rand(0,$characters_length-1)];
     }
     return $str;
 }
