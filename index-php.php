@@ -171,7 +171,7 @@ if (isset($_POST['signin'])) {
 $errors = [];
 if (isset($_POST['create_room'])) {
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
-        $owner_id = $_SESSION['user_id'];  
+        $owner_id = $_SESSION['id'];  
     } else {
         echo '<script>
             window.alert("Please login first!");
@@ -245,7 +245,7 @@ $errors = [];
 if (isset($_POST['join_room'])) {
     
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
-        $user_id = $_SESSION['user_id'];  
+        $user_id = $_SESSION['id'];  
     } else {
         echo '<script>
             window.alert("Please login first!");
