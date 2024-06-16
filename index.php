@@ -77,11 +77,14 @@
                 </tr>
               </thead>
               <tbody class="table-group-divider">
-                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ 
+                <?php 
+                   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ 
+                    $s_no=0;
                     if ($result && $result->num_rows > 0) {
-                      while ($row = $result->fetch_assoc()) { ?>
+                      while ($row = $result->fetch_assoc()) { 
+                           $s_no++;   ?>
                           <tr>
-                              <td><?php echo htmlspecialchars($row['ID']); ?></td>
+                              <td><?php echo $s_no; ?></td>
                               <td><?php echo htmlspecialchars($row['Name']); ?></td>
                               <td><a href="rooms/index.php?room=<?php echo htmlspecialchars($row['Room_code']); ?>" class="actionLink">Enter</a></td>
                           </tr>

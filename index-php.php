@@ -294,19 +294,20 @@ if (isset($_POST['join_room'])) {
             if (password_verify($password, $hashed_password)) {
                 // Insert user into usertoroom table
                 $stmt3=$conn->prepare("SELECT * FROM `usertoroom` WHERE User_ID =? and Room_ID=?");
-                $stmt3->bind_param("ss",$room_id,$user_id);
+                $stmt3->bind_param("ss",$user_id,$room_id);
                 $stmt3->execute();
                 $stmt3->store_result();
                 if($stmt3->num_rows<=0){
                     $stmt2 = $conn->prepare("INSERT INTO `usertoroom` (User_ID, Room_ID) VALUES (?, ?)");
                     $stmt2->bind_param("ss", $user_id, $room_id);
+                    $stmt2->execute();
+                    $stmt2->close();
                 }
                 $stmt3->close();
                 echo '<script>window.alert("Joined room successfully!")</script>';
                    // Redirect to room/index.php
-                header("Location: rooms/index.php?room=$code");
+                header("Location: rooms/index.php?room=$room_code");
                 exit();
-                $stmt2->close();
             } else {
                 $errors[] = "Incorrect password for the room";
             }
