@@ -170,15 +170,22 @@ if (isset($_POST['signin'])) {
 
 $errors = [];
 if (isset($_POST['create_room'])) {
-    require_once "components/config.php";
-
-    // Assuming these functions are defined to generate unique ID and code
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
+        $owner_id = $_SESSION['user_id'];  
+    } else {
+        echo '<script>
+            window.alert("Please login first!");
+            setTimeout(function(){
+                window.location.href = "index.php";
+            }, 500);
+        </script>';
+        exit;
+    }
     $id = create_unique_id();
     $room_name = $_POST['room_name'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
     $code = create_unique_code();
-    $owner_id = $_SESSION['id'];
 
     // Validate inputs
     if (empty($room_name)) {
@@ -236,11 +243,21 @@ if (isset($_POST['create_room'])) {
 
 $errors = [];
 if (isset($_POST['join_room'])) {
+    
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
+        $user_id = $_SESSION['user_id'];  
+    } else {
+        echo '<script>
+            window.alert("Please login first!");
+            setTimeout(function(){
+                window.location.href = "index.php";
+            }, 500);
+        </script>';
+        exit;
+    }
  
     $room_code = $_POST['room_code'];
     $password = $_POST['password'];
-    $user_id = $_SESSION['id'];
-
     // Validate inputs
     if (empty($room_code)) {
         $errors[] = "Room code is required";
