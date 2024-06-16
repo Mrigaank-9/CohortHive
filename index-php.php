@@ -4,6 +4,26 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 require_once "components/config.php";
 
+$result="";
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    $user_id = $_SESSION['id'];
+
+    $stmt = $conn->prepare("SELECT r.ID, r.Name, c.Room_code 
+                            FROM `rooms` r 
+                            INNER JOIN `usertoroom` ur ON r.ID = ur.Room_ID 
+                            INNER JOIN `codetoroomid` c ON r.ID = c.Room_ID 
+                            WHERE ur.User_ID = ?");
+    if ($stmt === false) {
+        die("Error preparing statement: " . $conn->error);
+    }
+    $stmt->bind_param("s", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+} else {
+    $result = null; // If user is not logged in or no rooms found
+}
+
 
 $errors = [];
 if(isset($_POST['signup'])){
@@ -13,6 +33,7 @@ if(isset($_POST['signup'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
+    
 
     if(empty($name)){
         $errors[] = "Name is required";
@@ -146,4 +167,145 @@ if (isset($_POST['signin'])) {
     }
     $conn->close();
 }
+
+$errors = [];
+if (isset($_POST['create_room'])) {
+    require_once "components/config.php";
+
+    // Assuming these functions are defined to generate unique ID and code
+    $id = create_unique_id();
+    $room_name = $_POST['room_name'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $code = create_unique_code();
+    $owner_id = $_SESSION['id'];
+
+    // Validate inputs
+    if (empty($room_name)) {
+        $errors[] = "Room name is required";
+    }
+    if (empty($password)) {
+        $errors[] = "Password is required";
+    }
+    if ($password !== $confirm_password) {
+        $errors[] = "Passwords do not match";
+    }
+
+    if (empty($errors)) {
+        // Hash the password
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // Insert room into the database
+        $stmt = $conn->prepare("INSERT INTO `rooms` (ID, Name, Password, Owner_ID) VALUES (?, ?, ?, ?)");
+        if ($stmt === false) {
+            die("Error preparing statement: " . $conn->error);
+        }
+        $stmt->bind_param("ssss", $id, $room_name, $hashed_password, $owner_id);
+
+        if ($stmt->execute()) {
+            echo '<script>window.alert("Room created successfully!")</script>';
+
+            // Insert owner into usertoroom table
+            $stmt2 = $conn->prepare("INSERT INTO `usertoroom` (User_ID, Room_ID) VALUES (?, ?)");
+            $stmt2->bind_param("ss", $owner_id, $id);
+            $stmt2->execute();
+            $stmt2->close();
+
+            // Insert room code into codetoroomid table
+            $stmt3 = $conn->prepare("INSERT INTO `codetoroomid` (Room_code, Room_ID) VALUES (?, ?)");
+            $stmt3->bind_param("ss", $code, $id);
+            $stmt3->execute();
+            $stmt3->close();
+
+            // Redirect to room/index.php
+            header("Location: rooms/index.php?room=$code");
+            exit();
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        $stmt->close();
+    } else {
+        // Display errors
+        foreach ($errors as $error) {
+            echo '<script>window.alert("' . $error . '")</script>';
+        }
+    }
+    $conn->close();
+}
+
+$errors = [];
+if (isset($_POST['join_room'])) {
+ 
+    $room_code = $_POST['room_code'];
+    $password = $_POST['password'];
+    $user_id = $_SESSION['id'];
+
+    // Validate inputs
+    if (empty($room_code)) {
+        $errors[] = "Room code is required";
+    }
+    else{
+        $stmt = $conn->prepare("SELECT * FROM `codetoroomid` WHERE Room_code = ?");
+        $stmt->bind_param("s", $room_code);
+        $stmt->execute();
+        $stmt->store_result();
+        if($stmt->num_rows<=0){
+            $errors[]="Invalid Room Code";
+        }
+        $stmt->close();
+    }
+    if (empty($password)) {
+        $errors[] = "Password is required";
+    }
+
+    if (empty($errors)) {
+        // Check if room code exists and fetch room ID and hashed password
+        $stmt = $conn->prepare("SELECT r.ID, r.Password FROM `rooms` r INNER JOIN `codetoroomid` c ON r.ID = c.Room_ID WHERE c.Room_code = ?");
+        if ($stmt === false) {
+            die("Error preparing statement: " . $conn->error);
+        }
+        $stmt->bind_param("s", $room_code);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            $stmt->bind_result($room_id, $hashed_password);
+            $stmt->fetch();
+
+            // Verify the password
+            if (password_verify($password, $hashed_password)) {
+                // Insert user into usertoroom table
+                $stmt3=$conn->prepare("SELECT * FROM `usertoroom` WHERE User_ID =? and Room_ID=?");
+                $stmt3->bind_param("ss",$room_id,$user_id);
+                $stmt3->execute();
+                $stmt3->store_result();
+                if($stmt3->num_rows<=0){
+                    $stmt2 = $conn->prepare("INSERT INTO `usertoroom` (User_ID, Room_ID) VALUES (?, ?)");
+                    $stmt2->bind_param("ss", $user_id, $room_id);
+                }
+                $stmt3->close();
+                echo '<script>window.alert("Joined room successfully!")</script>';
+                   // Redirect to room/index.php
+                header("Location: rooms/index.php?room=$code");
+                exit();
+                $stmt2->close();
+            } else {
+                $errors[] = "Incorrect password for the room";
+            }
+        } else {
+            $errors[] = "Room code not found";
+        }
+        $stmt->close();
+    }
+
+    if (!empty($errors)) {
+        // Display errors
+        foreach ($errors as $error) {
+            echo '<script>window.alert("' . $error . '")</script>';
+        }
+    }
+    $conn->close();
+}
+
 ?>
