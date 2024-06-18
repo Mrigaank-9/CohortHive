@@ -3,6 +3,7 @@ session_start();
 if(isset($_SESSION['id'])){
     include_once "../../../components/config.php";
     $outgoing_id = $_SESSION['id'];
+    // $room_id=$_SESSION['room_id'];
     $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
     $message = mysqli_real_escape_string($conn, $_POST['message']);
 
