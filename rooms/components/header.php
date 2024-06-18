@@ -5,7 +5,7 @@
             <nav class="d-flex align-items-center ms-5">
                 <a href="" class="nav-link text-white mx-3" style="font-size: 1.5rem;"><i class="bi bi-house"></i></a>
                 <a href="chat/" class="nav-link text-white mx-3" style="font-size: 1.5rem;"><i class="bi bi-chat"></i></a>
-                <a href="#" class="nav-link text-white mx-3" style="font-size: 1.5rem;"><i class="bi bi-camera-video"></i></a>
+                <a href="Conference" class="nav-link text-white mx-3" style="font-size: 1.5rem;"><i class="bi bi-camera-video"></i></a>
                 <a href="#" class="nav-link text-white mx-3" style="font-size: 1.5rem;"><i class="bi bi-github"></i></a>
                 <a href="#" class="nav-link text-white mx-3" style="font-size: 1.5rem;"><i class="bi bi-briefcase"></i></a>
                 <a href="#" class="nav-link text-white mx-3" style="font-size: 1.5rem;"><i class="bi bi-easel"></i></a>

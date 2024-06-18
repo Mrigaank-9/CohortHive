@@ -10,6 +10,7 @@
 
   if (isset($_GET['room'])) {
     $room_code = $_GET['room'];
+    $_SESSION['room_code']=$room_code;
     // Prepare the statement to fetch Room_ID based on Room_code
     $stmt = $conn->prepare("SELECT Room_ID FROM `codetoroomid` WHERE Room_code = ?");
     $stmt->bind_param("s", $room_code);
@@ -92,6 +93,53 @@ if (isset($_GET['remove_user_id'])) {
     header("Location:rooms/index.php");
     exit;
 }
+if(isset($_POST['announce'])){
+  // Escape user inputs for security (prevent SQL injection)
+  $title = $conn->real_escape_string($_POST['title']);
+  $description = $conn->real_escape_string($_POST['description']);
+  $room_id = $_SESSION['room_id']; // Assuming you have room_id stored in session
+  $user_id = $_SESSION['id']; // Assuming you have user_id stored in session
+
+  // SQL query to insert data into announcements table
+  $sql = "INSERT INTO `announcements` (Room_ID,User_ID,Title, Description) 
+          VALUES ('$room_id', '$user_id','$title', '$description')";
+
+  if ($conn->query($sql) === TRUE) {
+      echo '<script>
+            window.alert("Announcement Added Successfully!"); </script>';
+      // Optionally, you can redirect or show a success message here
+  } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}
+
+// Fetching Announcements
+$sql = "SELECT a.ID, a.Title, a.Description, a.User_ID, u.Name
+        FROM announcements a
+        LEFT JOIN users u ON a.User_ID = u.ID
+        WHERE Room_ID = ?
+        ORDER BY a.ID DESC";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $_SESSION['room_id']);
+$stmt->execute();
+$result = $stmt->get_result();
+$rowNumber = 1;
+
+$announce_result=[];
+if (isset($_GET['view_announcement'])) {
+  $announcement_id = $_GET['view_announcement'];
+
+  $query = $conn->prepare("SELECT a.ID, a.Title, a.Description, a.User_ID, u.Name
+        FROM announcements a
+        LEFT JOIN users u ON a.User_ID = u.ID
+        WHERE a.ID = ?
+        ORDER BY a.ID DESC");
+  $query->bind_param("i", $announcement_id);
+  $query->execute();
+  $announce_result=$query->get_result();
+}
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -136,7 +184,13 @@ if (isset($_GET['remove_user_id'])) {
                              <tr>
                                <th scope="row"><?php echo $i++;?></th>
                                <td><?php echo htmlspecialchars($user['Name']); ?></td>
-                               <td><a href="?remove_user_id=<?php echo htmlspecialchars($user['ID']); ?>" class="actionLink">Laat Markar Bahr Nikale</a></td>
+                               <td>
+                                  <?php if ($_SESSION['id'] != $owner_id): ?>
+                                      <a href="?remove_user_id=<?php echo htmlspecialchars($user['ID']); ?>" class="actionLink" disabled style="cursor: not-allowed;">Kick</a>
+                                  <?php else: ?>
+                                      <a href="?remove_user_id=<?php echo htmlspecialchars($user['ID']); ?>" class="actionLink">Kick</a>
+                                  <?php endif; ?>
+                               </td>
                              </tr>
                          <?php endforeach; ?>
                         </tbody>
@@ -157,24 +211,24 @@ if (isset($_GET['remove_user_id'])) {
                       </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Is earth Round? Or is it flat??</td>
-                        <td>Rajeev Singh</td>
-                        <td><a href="#" class="actionLink"><button class="btn btn-outline-secondary btn-lg btn-dark seeAnnouncements" style="--bs-btn-font-size: 0.8rem; --bs-btn-color: white">Read</button></a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Important Bug fixed!</td>
-                        <td>Mrigaank Jaswal</td>
-                        <td><a href="#" class="actionLink"><button class="btn btn-outline-secondary btn-lg btn-dark seeAnnouncements" style="--bs-btn-font-size: 0.8rem; --bs-btn-color: white">Read</button></a></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Important Update!</td>
-                        <td>Saket Agarwal</td>
-                        <td><a href="#" class="actionLink"><button class="btn btn-outline-secondary btn-lg btn-dark seeAnnouncements" style="--bs-btn-font-size: 0.8rem; --bs-btn-color: white">Read</button></a></td>
-                      </tr>
+                      <?php
+                       if ($result->num_rows > 0) {
+                           while ($row = $result->fetch_assoc()) {
+                               $title = htmlspecialchars($row['Title']);
+                               $description = htmlspecialchars($row['Description']);
+                               $creator = htmlspecialchars($row['Name']);
+                               echo '<tr>';
+                               echo '<th scope="row">' . $rowNumber . '</th>';
+                               echo '<td>' . $title . '</td>';
+                               echo '<td>' . $creator . '</td>';
+                               echo '<td><a href="" class="actionLink"><button class="btn btn-outline-secondary btn-lg btn-dark seeAnnouncements" style="--bs-btn-font-size: 0.8rem; --bs-btn-color: white" disabled style="cursor: not-allowed;">Read</button></a></td>';
+                               echo '</tr>';
+                               $rowNumber++;
+                           }
+                       } else {
+                           echo '<tr><td colspan="4">No announcements found.</td></tr>';
+                       }  
+                       ?>
                     </tbody>
                   </table>
                   <div class="addAnnouncement"><button class="btn btn-outline-secondary btn-lg btn-dark addAnnouncement" style="--bs-btn-font-size: 0.9rem; --bs-btn-color: white">Add Announcement</button></div>
@@ -184,30 +238,30 @@ if (isset($_GET['remove_user_id'])) {
         </div>      
     </div>
     <div id="createAnnouncementid" class="createAnnouncement form hide">
-      <button class="close-btn">&times;</button>
-      <form>
-          <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="roomName" aria-describedby="emailHelp">
-          </div>
-          <div class="mb-3">
-              <label for="creator" class="form-label">Creator</label>
-              <input type="text" class="form-control" id="roomName" aria-describedby="emailHelp">
-          </div>
-          <div class="mb-3">
-              <label for="formFile" class="form-label">Upload the File</label>
-              <input class="form-control" type="file" id="formFile">
-            </div>
-          <button type="submit" class="btn btn-outline-secondary btn-lg btn-dark" style="--bs-btn-font-size: 1.1rem; --bs-btn-color: white">Submit</button>
-        </form>
-  </div>
-  <div id="viewAnnouncementid" class="viewAnnouncement form hide">
     <button class="close-btn">&times;</button>
-      <form>
-          <div class="roomName">Title</div>
-          <div class="media"></div>
-        </form>
-  </div>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" aria-describedby="emailHelp" name="title" required>
+        </div>
+        <div class="mb-4">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" rows="3" name="description" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Upload File</label>
+            <input class="form-control" type="file" id="formFile" disabled style="cursor: not-allowed;">
+        </div>
+        <button type="submit" name="announce" class="btn btn-outline-secondary btn-lg btn-dark" style="--bs-btn-font-size: 1.1rem; --bs-btn-color: white">Submit</button>
+    </form>
+</div>
+<div id="viewAnnouncementid" class="viewAnnouncement form hide">
+    <button class="close-btn">&times;</button>
+    <div class="roomName"><?php echo $announce_result['Title'];?></div>
+    <div class="creator"><?php echo $announce_result['Name'];?></div>
+    <div class="description"><?php echo $announce_result['Description'];?></div>
+</div>
+
 
   <?php require_once "../components/footer.php";?>
 

@@ -25,13 +25,13 @@
                 <h5 class="text-uppercase">Connect With Us</h5>
                 <ul class="list-unstyled d-flex flex-column justify-content-center">
                     <li>
-                        <a href="https://www.linkedin.com/in/rajeevsingh2412/" class="text-white text-decoration-none me-3"><i class="fab fa-linkedin"></i>Rajeev Singh</a>
+                        <a href="https://www.linkedin.com/in/rajeevsingh2412/" class="text-white text-decoration-none me-3"><i class="fab fa-linkedin"></i> Rajeev Singh</a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/mrigaank-jaswal-43a7b2249/" class="text-white text-decoration-none me-3"><i class="fab fa-linkedin"></i>Mrigaank Jaswal</a>
+                        <a href="https://www.linkedin.com/in/mrigaank-jaswal-43a7b2249/" class="text-white text-decoration-none me-3"><i class="fab fa-linkedin"></i> Mrigaank Jaswal</a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/saket-agarwal007/" class="text-white text-decoration-none me-3"><i class="fab fa-linkedin"></i>Saket Agarwal</a>
+                        <a href="https://www.linkedin.com/in/saket-agarwal007/" class="text-white text-decoration-none me-3"><i class="fab fa-linkedin"></i> Saket Agarwal</a>
                     </li>
                 </ul>
 
@@ -46,7 +46,7 @@
                         <i class="fas fa-phone me-2"></i> +91 8395802933
                     </li>
                     <li>
-                        <i class="fas fa-map-marker-alt me-2"></i>Chandigarh University, Mohali, Punjab, India
+                        <i class="fas fa-map-marker-alt me-2"></i> Chandigarh University, Mohali, Punjab, India
                     </li>
                 </ul>
             </div>
