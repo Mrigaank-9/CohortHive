@@ -199,18 +199,16 @@ if (isset($_POST['create_room'])) {
     }
 
     if (empty($errors)) {
-        // Hash the password
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        
 
         // Insert room into the database
         $stmt = $conn->prepare("INSERT INTO `rooms` (ID, Name, Password, Owner_ID) VALUES (?, ?, ?, ?)");
         if ($stmt === false) {
             die("Error preparing statement: " . $conn->error);
         }
-        $stmt->bind_param("ssss", $id, $room_name, $hashed_password, $owner_id);
+        $stmt->bind_param("ssss", $id, $room_name, $password, $owner_id);
 
         if ($stmt->execute()) {
-            echo '<script>window.alert("Room created successfully!")</script>';
 
             // Insert owner into usertoroom table
             $stmt2 = $conn->prepare("INSERT INTO `usertoroom` (User_ID, Room_ID) VALUES (?, ?)");
@@ -224,8 +222,20 @@ if (isset($_POST['create_room'])) {
             $stmt3->execute();
             $stmt3->close();
 
+            // insert user details in chat_users table
+            $stmt4=$conn->prepare("INSERT INTO `chat_users` (User_ID,Name,Room_ID,Status) VALUES(?,?,?,?) ");
+            $status="Active now";
+            $stmt4->bind_param("ssss",$owner_id,$_SESSION['name'],$id,$status);
+            $stmt4->execute();
+            $stmt4->close();
+
             // Redirect to room/index.php
-            header("Location: rooms/index.php?room=$code");
+            echo '<script>
+                var newTabUrl = "rooms/index.php?room=' . $code . '";
+                window.open(newTabUrl, "_blank");
+                window.location.href = newTabUrl;
+            </script>';
+
             exit();
         } else {
             echo "Error: " . $stmt->error;
@@ -291,7 +301,7 @@ if (isset($_POST['join_room'])) {
             $stmt->fetch();
 
             // Verify the password
-            if (password_verify($password, $hashed_password)) {
+            if ($password===$hashed_password) {
                 // Insert user into usertoroom table
                 $stmt3=$conn->prepare("SELECT * FROM `usertoroom` WHERE User_ID =? and Room_ID=?");
                 $stmt3->bind_param("ss",$user_id,$room_id);
@@ -304,9 +314,29 @@ if (isset($_POST['join_room'])) {
                     $stmt2->close();
                 }
                 $stmt3->close();
-                echo '<script>window.alert("Joined room successfully!")</script>';
-                   // Redirect to room/index.php
-                header("Location: rooms/index.php?room=$room_code");
+
+                $stmt5=$conn->prepare("SELECT * FROM `chat_users` WHERE User_ID=? AND Room_ID=? ");
+                $stmt5->bind_param("ss",$user_id,$room_id);
+                $stmt5->execute();
+                $stmt5->store_result();
+                if($stmt5->num_rows<=0){
+                    // insert user details in chat_users table
+                    $stmt4=$conn->prepare("INSERT INTO `chat_users` (User_ID,Name,Room_ID,Status) VALUES(?,?,?,?) ");
+                    $status="Active now";
+                    $stmt4->bind_param("ssss",$user_id,$_SESSION['name'],$room_id,$status);
+                    $stmt4->execute();
+                    $stmt4->close();
+                }
+                $stmt5->close();
+
+
+               // Redirect to room/index.php
+               echo '<script>
+               var newTabUrl = "rooms/index.php?room=' . $room_code . '";
+               window.open(newTabUrl, "_blank");
+               window.location.href = newTabUrl;
+           </script>';
+           exit();
                 exit();
             } else {
                 $errors[] = "Incorrect password for the room";

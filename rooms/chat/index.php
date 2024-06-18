@@ -1,0 +1,31 @@
+<?php require_once "php/index.php"; ?>
+
+<?php require_once "header.php";?>
+<body>
+   <?php require_once "../../components/preloader.php"; ?>
+  <div class="wrapper">
+    <section class="users">
+      <header>
+        <div class="content">
+          <img src="profile-image.webp" alt="">
+          <div class="details">
+            <span><?php echo $user['Name']; ?></span>
+            <p><?php echo $user['Status']; ?></p>
+          </div>
+        </div>
+      </header>
+      <div class="search">
+        <span class="text">Select a user to start chat</span>
+        <input type="text" placeholder="Enter name to search...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <div class="users-list">
+  
+      </div>
+    </section>
+  </div>
+
+  <script src="javascript/users.js"></script>
+
+</body>
+</html>

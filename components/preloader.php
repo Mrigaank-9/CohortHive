@@ -1,7 +1,7 @@
 <!-- preloader.php -->
 <style>
   #preloader {
-    background: white url("images/spiral-css-preloader.gif") no-repeat center center;
+    background: white url("images/preloader.gif") no-repeat center center;
     width: 100%;
     height: 100%;
     position: fixed;

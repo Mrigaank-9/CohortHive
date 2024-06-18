@@ -86,8 +86,7 @@
                           <tr>
                               <td><?php echo $s_no; ?></td>
                               <td><?php echo htmlspecialchars($row['Name']); ?></td>
-                              <td><a href="rooms/index.php?room=<?php echo htmlspecialchars($row['Room_code']); ?>" class="actionLink">Enter</a></td>
-                          </tr>
+                              <td><a href="javascript:void(0);" onclick="openRoomInNewTab('<?php echo htmlspecialchars($row['Room_code']); ?>')" class="actionLink">Enter</a></td>                          </tr>
                       <?php }
                      }else { ?>
                       <tr>
@@ -117,3 +116,11 @@
     <script src="js/index_login.js"></script>
   </body>
 </html>
+
+<script>
+// Redirect to a new tab
+function openRoomInNewTab(roomCode) {
+    var newTabUrl = "rooms/index.php?room=" + roomCode;
+    window.open(newTabUrl, '_blank');
+}
+</script>
