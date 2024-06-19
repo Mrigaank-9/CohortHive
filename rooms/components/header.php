@@ -41,7 +41,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link text-white d-flex align-items-center">
+                            <a href="Settings" class="nav-link text-white d-flex align-items-center">
                                 <i class="bi bi-gear"></i><span class="ms-2 d-lg-none">Settings</span>
                             </a>
                         </li>
