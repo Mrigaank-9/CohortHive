@@ -11,44 +11,42 @@
                 <h5 class="text-uppercase">Quick Links</h5>
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <a href="#" class="text-white text-decoration-none">Home</a>
+                        <a href="index.php" class="text-white text-decoration-none">Home</a>
                     </li>
                     <li>
-                        <a href="#" class="text-white text-decoration-none">Features</a>
+                        <a href="index.php#features" class="text-white text-decoration-none">Features</a>
                     </li>
                     <li>
-                        <a href="#" class="text-white text-decoration-none">Contact</a>
+                        <a href="index.php#contact" class="text-white text-decoration-none">Contact</a>
                     </li>
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Follow Us</h5>
-                <ul class="list-unstyled d-flex justify-content-center">
+                <h5 class="text-uppercase">Connect With Us</h5>
+                <ul class="list-unstyled d-flex flex-column justify-content-center">
                     <li>
-                        <a href="#" class="text-white text-decoration-none me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/rajeevsingh2412/" class="text-white text-decoration-none me-3"><i class="fab fa-linkedin"></i> Rajeev Singh</a>
                     </li>
                     <li>
-                        <a href="#" class="text-white text-decoration-none me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/mrigaank-jaswal-43a7b2249/" class="text-white text-decoration-none me-3"><i class="fab fa-linkedin"></i> Mrigaank Jaswal</a>
                     </li>
                     <li>
-                        <a href="#" class="text-white text-decoration-none me-3"><i class="fab fa-linkedin-in"></i></a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-white text-decoration-none"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/saket-agarwal007/" class="text-white text-decoration-none me-3"><i class="fab fa-linkedin"></i> Saket Agarwal</a>
                     </li>
                 </ul>
+
             </div>
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                 <h5 class="text-uppercase">Contact Us</h5>
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <i class="fas fa-envelope me-2"></i> info@collabhub.com
+                        <i class="fas fa-envelope me-2"></i> cohorthive@gmail.com
                     </li>
                     <li>
-                        <i class="fas fa-phone me-2"></i> +1 234 567 890
+                        <i class="fas fa-phone me-2"></i> +91 8395802933
                     </li>
                     <li>
-                        <i class="fas fa-map-marker-alt me-2"></i> 123 Developer Lane, Tech City, USA
+                        <i class="fas fa-map-marker-alt me-2"></i> Chandigarh University, Mohali, Punjab, India
                     </li>
                 </ul>
             </div>

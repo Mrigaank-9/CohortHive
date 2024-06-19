@@ -1,36 +1,33 @@
 body{
-    background-image: url("../images/background01-indexpage.jpg");
+    background-image: url("../../images/background01-indexpage.jpg");
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     
 }
+.no-vertical-scroll {
+    overflow-x: hidden;
+}
 .blur{
     filter: blur(1.1rem);
 }
-.no-vertical-scroll {
-    overflow-y: hidden;
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
 }
 .startSec{
     display: flex;
     padding-top: 30px;
-}
-.title{
-    font-size: 5rem;
-    margin-top: 70px;
-    font-weight: 600;
-    color: #1e1f23;
-    cursor:default;
-}
-.subTitle{
-    font-size: 3rem;
-    color: rgb(83, 23, 23);
-    cursor:default;
-}
-.midEle{
-    align-self: center;
-    cursor:default;
+    height: 100%;
+    justify-content: space-between;
 }
 .form{
     margin-top: 100px;
@@ -48,63 +45,35 @@ body{
     background-color: rgba(255, 255, 255, 0.45);
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(12px);
+    z-index: 1;
 }
-#createfromid{
+#createAnnouncementid{
+    height: 450px;
+}
+.media{
     height: 400px;
-}
-.meeting{
-    margin-top: 100px;
-    justify-content: center;
-    padding-top: 100px;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
     width: 400px;
-    justify-content: space-evenly;
-    height: 300px;
-    padding: 35px;
-    border: 1px solid rgba(255, 255, 255, .25);
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.45);
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(12px);
+    background-image: url("Resources/Photos/announcement01.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
 }
-.createMsg{
-    position:fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
+#viewAnnouncementid{
+    height: 550px;
+    width: 500px;
 }
-.joinMsg {
-    position:fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-}
-.hide{
-    display: none;
-}
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #000;
-    cursor: pointer;
-}
-.history{
+
+.roomDet{
     margin-top: 100px;
     justify-content: center;
     padding-top: 100px;
     min-height: 200px;
     display: flex;
     flex-direction: column;
-    width: 700px;
-    justify-content: space-evenly;
-    height: 300px;
+    width: 34vw;
+    /* justify-content: space-evenly; */
+    height: 350px;
     padding: 35px;
     border: 1px solid rgba(255, 255, 255, .25);
     border-radius: 20px;
@@ -112,14 +81,64 @@ body{
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(12px);
     cursor: default;
-
 }
+.roomName{
+    font-size: 2rem;
+    font-weight: 600;
+}
+.ownerName{
+    padding-top: 0px;
+}
+.roomsubdet{
+    color: blueviolet;
+}
+.idtitle{
+    color: #1e1f23;
+}
+
+.attendeeList{
+    padding-top: 2.5rem;
+}
+
+.accouncementsContent{
+    margin-top: 100px;
+    justify-content: center;
+    padding-top: 100px;
+    min-height: 200px;
+    max-height:1200px;
+    display: flex;
+    flex-direction: column;
+    width: 45vw;
+    /* justify-content: space-evenly; */
+    height: 350px;
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    cursor: default;
+}
+
+.createAnnouncement{
+    position:fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+.viewAnnouncement {
+    position:fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    
+}
+.hide{
+    display: none;
+}
+
 .actionLink{
     text-decoration: none;
 }
-.historySec{
-    padding-bottom: 50px;
-}
-
 
 

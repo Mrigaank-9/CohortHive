@@ -21,4 +21,14 @@ function create_unique_id(){
     return $str;
 }
 
+function create_unique_code(){
+    $characters="1234567890abcdefghijklmnopqrstuvwxyz";
+    $str="";
+    $characters_length=strlen($characters);
+    for($i=0;$i<10;$i++){
+        $str.=$characters[mt_rand(0,$characters_length-1)];
+    }
+    return $str;
+}
+
 ?>
