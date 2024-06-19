@@ -3,7 +3,14 @@
 <?php require_once "header.php";?>
 <body>
    <?php require_once "../../components/preloader.php"; ?>
+
+
   <div class="wrapper">
+    <div class="upper-head">
+        <a href="../index.php?room=<?php echo $_SESSION['room_code'];?>" class="back-to-room">
+           <i class="fas fa-arrow-left"></i> Back To Room
+        </a>
+   </div>
     <section class="users">
       <header>
         <div class="content">

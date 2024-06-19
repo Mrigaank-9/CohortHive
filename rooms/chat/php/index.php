@@ -10,6 +10,12 @@ if (!isset($_SESSION['id'])) {
   exit;
 }
 
+$stmt=$conn->prepare("UPDATE `chat_users` SET Status='Active Now' WHERE User_ID=?");
+$stmt->bind_param("s",$_SESSION['id']);
+$stmt->execute();
+$stmt->close();
+
+
 // Prepare and execute the SQL statement to fetch user details
 $stmt = $conn->prepare("SELECT Name, Status FROM `chat_users` WHERE User_ID = ?");
 if ($stmt === false) {

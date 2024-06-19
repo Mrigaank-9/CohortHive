@@ -100,7 +100,7 @@ if(isset($_POST['signup'])){
             $_SESSION['name'] = $name;
             $_SESSION['email'] = $email;
         } else {
-            echo "Error: " . $stmt->error;
+            // echo "Error: " . $stmt->error;
         }
 
         $stmt->close();
@@ -139,7 +139,7 @@ if (isset($_POST['signin'])) {
 
             // Verify the password
             if (password_verify($password, $hashed_password)) {
-                echo '<script>window.alert("Sign-in successful!")</script>';
+                
                 if (session_status() == PHP_SESSION_NONE) {
                     session_start();
                 }
@@ -148,8 +148,13 @@ if (isset($_POST['signin'])) {
                 $_SESSION['username'] = $username;
                 $_SESSION['name'] = $name;
                 $_SESSION['email'] = $email;
-                header("Location:index.php");
-                exit;
+                
+                 echo '<script>
+                   window.alert("Login Succesful!");
+                   setTimeout(function(){
+                   window.location.href = "index.php";
+                   }, 500);
+                 </script>';
             } else {
                 $errors[] = "Incorrect password";
             }
@@ -231,10 +236,8 @@ if (isset($_POST['create_room'])) {
 
             // Redirect to room/index.php
             echo '<script>
-                var newTabUrl = "rooms/index.php?room=' . $code . '";
-                window.open(newTabUrl, "_blank");
-                window.location.href = newTabUrl;
-            </script>';
+                window.location.href = "rooms/index.php?room=' . $code . '";
+               </script>';
 
             exit();
         } else {
@@ -332,11 +335,8 @@ if (isset($_POST['join_room'])) {
 
                // Redirect to room/index.php
                echo '<script>
-               var newTabUrl = "rooms/index.php?room=' . $room_code . '";
-               window.open(newTabUrl, "_blank");
-               window.location.href = newTabUrl;
-           </script>';
-           exit();
+                   window.location.href = "rooms/index.php?room=' . $room_code . '";
+                    </script>';
                 exit();
             } else {
                 $errors[] = "Incorrect password for the room";

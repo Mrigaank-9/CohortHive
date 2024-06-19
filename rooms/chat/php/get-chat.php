@@ -10,12 +10,15 @@ if (isset($_SESSION['id'])) {
     $sql = "SELECT messages.*, chat_users.Name 
             FROM `messages` 
             LEFT JOIN `chat_users` ON chat_users.User_ID = messages.Outgoing_ID
-            WHERE (Outgoing_ID = ? AND Incomming_ID = ?)
-            OR (Outgoing_ID = ? AND Incomming_ID = ?)
+             WHERE (
+             (Outgoing_ID = ? AND Incomming_ID = ?) 
+               OR (Outgoing_ID = ? AND Incomming_ID = ?)
+              ) 
+             AND (messages.Room_ID =chat_users.Room_ID)
             ORDER BY messages.ID";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $outgoing_id, $incoming_id, $incoming_id, $outgoing_id);
+    $stmt->bind_param("ssss", $outgoing_id, $incoming_id, $outgoing_id,$incoming_id);
     $stmt->execute();
     $result = $stmt->get_result();
 

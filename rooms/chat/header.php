@@ -12,11 +12,16 @@
   <style>
     body{
       background-image: url("../../images/background01-indexpage.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-color:black;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-color:black;
+    }
+    .upper-head{
+      margin-top:4px;
+      padding: 25px 30px;
+
     }
   </style>
 </head>
