@@ -1,15 +1,14 @@
-body{
-    background-image: url("../../images/background01-indexpage.jpg");
-    background-size:cover;
+body {
+    background-image: url("/Resources/Photos/bg02.jpg");
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    
 }
 .no-vertical-scroll {
-    overflow-x: hidden;
+    overflow-y: hidden;
 }
-.blur{
+.blur {
     filter: blur(1.1rem);
 }
 .close-btn {
@@ -23,22 +22,122 @@ body{
     color: #000;
     cursor: pointer;
 }
-.startSec{
+.startSec {
     display: flex;
     padding-top: 30px;
     height: 100%;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
-.form{
+.form, .roomDet, .accouncementsContent {
+    margin-top: 5vh;
+    justify-content: center;
+    padding-top: 5vh;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    cursor: default;
+}
+.form {
+    width: 80vw;
+    max-width: 400px;
+    height: auto;
+    z-index: 1;
+}
+.roomDet, .accouncementsContent {
+    width: 90vw;
+    max-width: 800px;
+    height: auto;
+}
+#createAnnouncementid {
+    height: 400px;
+}
+.media {
+    height: 40vw;
+    width: 40vw;
+    min-width: 350px;
+    min-height: 350px;
+    background-image: url("Resources/Photos/announcement01.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+}
+#viewAnnouncementid {
+    /* width: 190vw; */
+    max-width: 500px;
+    width: auto;
+    height: auto;
+    max-height: 550px;
+}
+.roomName {
+    font-size: 2rem;
+    font-weight: 600;
+}
+.ownerName {
+    padding-top: 0px;
+}
+.roomsubdet {
+    color: blueviolet;
+}
+.idtitle {
+    color: #1e1f23;
+}
+.attendeeList {
+    padding-top: 2.5rem;
+}
+.createAnnouncement, .viewAnnouncement, .addToTimelineFrom {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    max-width: 500px;
+    height: auto;
+}
+.hide {
+    display: none;
+}
+.actionLink {
+    text-decoration: none;
+}
+@media screen and (min-width: 768px) {
+    .form, .roomDet, .accouncementsContent {
+        width: 45vw;
+    }
+
+    .media {
+        width: 20vw;
+        height: 20vw;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .form, .roomDet, .accouncementsContent {
+        width: 34vw;
+    }
+
+    .media {
+        width: 20vw;
+        height: 20vw;
+    }
+}
+/* TimelineCSS */
+.timelinePart{
     margin-top: 100px;
     justify-content: center;
     padding-top: 100px;
     min-height: 200px;
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 100%;
     justify-content: space-evenly;
-    height: 300px;
+    height: auto;
     padding: 35px;
     border: 1px solid rgba(255, 255, 255, .25);
     border-radius: 20px;
@@ -47,98 +146,179 @@ body{
     backdrop-filter: blur(12px);
     z-index: 1;
 }
-#createAnnouncementid{
-    height: 450px;
+
+body{margin-top:20px;}
+.timeline {
+    border-left: 3px solid #727cf5;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    margin: 0 auto;
+    letter-spacing: 0.2px;
+    position: relative;
+    line-height: 1.4em;
+    /* background: rgba(114, 124, 245, 0.09); */
+    font-size: 1.03em;
+    padding: 50px;
+    list-style: none;
+    text-align: left;
+    max-width: 60%;
+    max-height: 550px;
+    overflow-y: scroll;
 }
-.media{
-    height: 400px;
-    width: 400px;
-    background-image: url("Resources/Photos/announcement01.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 10px;
+/* .timelineHead{
+    display: flex;
+} */
+.addToTimeline{
+    padding-bottom: 10px;
+
 }
-#viewAnnouncementid{
-    height: 550px;
-    width: 500px;
+@media (max-width: 767px) {
+    .timeline {
+        max-width: 98%;
+        padding: 25px;
+    }
 }
 
-.roomDet{
-    margin-top: 100px;
-    justify-content: center;
-    padding-top: 100px;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    width: 34vw;
-    /* justify-content: space-evenly; */
-    height: 350px;
-    padding: 35px;
-    border: 1px solid rgba(255, 255, 255, .25);
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.45);
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(12px);
-    cursor: default;
+.timeline h1 {
+    font-weight: 300;
+    font-size: 1.4em;
 }
-.roomName{
+.deadline{
+    color: red;
+    font-size: 0.7rem;
+}
+.timeline h2,
+.timeline h3 {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.timeline .event {
+    border-bottom: 1.6px dashed #e8ebf1;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+@media (max-width: 767px) {
+    .timeline .event {
+        padding-top: 30px;
+    }
+}
+.card-title{
     font-size: 2rem;
     font-weight: 600;
+    padding-bottom: 10px;
 }
-.ownerName{
-    padding-top: 0px;
-}
-.roomsubdet{
-    color: blueviolet;
-}
-.idtitle{
-    color: #1e1f23;
+.timeline .event:last-of-type {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border: none;
 }
 
-.attendeeList{
-    padding-top: 2.5rem;
+.timeline .event:before,
+.timeline .event:after {
+    position: absolute;
+    display: block;
+    top: 0;
 }
 
-.accouncementsContent{
-    margin-top: 100px;
-    justify-content: center;
-    padding-top: 100px;
-    min-height: 200px;
-    max-height:1200px;
-    display: flex;
-    flex-direction: column;
-    width: 45vw;
-    /* justify-content: space-evenly; */
-    height: 350px;
-    padding: 35px;
-    border: 1px solid rgba(255, 255, 255, .25);
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.45);
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(12px);
-    cursor: default;
+.annTable{
+    overflow-y: scroll;
+    max-height: 250px;
+}
+.timeline .event:before {
+    left: -207px;
+    content: attr(data-date);
+    text-align: right;
+    font-weight: 100;
+    font-size: 0.9em;
+    min-width: 120px;
 }
 
-.createAnnouncement{
-    position:fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-}
-.viewAnnouncement {
-    position:fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
+
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
     
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.79);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.909);
+  }
+  
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 255, 255, 0.3);
+  } 
+/* Responsive */
+@media (max-width: 767px) {
+    .timeline .event:before {
+        left: 0px;
+        text-align: left;
+    }
 }
-.hide{
+
+.timeline .event:after {
+    -webkit-box-shadow: 0 0 0 3px #727cf5;
+    box-shadow: 0 0 0 3px #727cf5;
+    left: -55.8px;
+    background: #fff;
+    border-radius: 50%;
+    height: 9px;
+    width: 9px;
+    content: "";
+    top: 5px;
+}
+
+@media (max-width: 767px) {
+    .timeline .event:after {
+        left: -31.8px;
+    }
+}
+
+.rtl .timeline {
+    border-left: 0;
+    text-align: right;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    border-right: 3px solid #727cf5;
+}
+
+.rtl .timeline .event::before {
+    left: 0;
+    right: -170px;
+}
+
+.rtl .timeline .event::after {
+    left: 0;
+    right: -55.8px;
+}
+.deleteicon{
     display: none;
 }
-
-.actionLink{
-    text-decoration: none;
+.event:hover{
+    background-color: rgba(255, 255, 255, 0.589);
+    border-radius: 10px;
+    cursor: default;
 }
-
-
+.event:hover .deleteicon{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    display: block;
+    cursor: pointer;
+}
