@@ -4,9 +4,9 @@
     <div class="container d-flex justify-content-between align-items-center">
         <h1 class="mb-0">Cohort Hive</h1>
         <nav class="d-flex align-items-center">
-            <a href="#" class="nav-link text-white me-3">Home</a>
+            <!-- <a href="#" class="nav-link text-white me-3">Home</a>
             <a href="#" class="nav-link text-white me-3">Features</a>
-            <a href="#" class="nav-link text-white me-3">Contact</a>
+            <a href="#" class="nav-link text-white me-3">Contact</a> -->
             <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                 <span class="nav-link text-white me-3"> <?php echo $_SESSION['username']; ?></span>
                 <a href="components/logout.php" class="btn btn-outline-light ms-3 me-2">Logout</a>
