@@ -100,7 +100,8 @@ if (isset($_GET['remove_user_id'])) {
     $query->execute();
 
     // Redirect to avoid resubmission on refresh
-    header("Location:rooms/index.php");
+    header("Location:rooms/index.php?room=".$_SESSION['room_code']);
+
     exit;
 }
 if(isset($_POST['announce'])){
