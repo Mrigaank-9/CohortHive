@@ -1,3 +1,9 @@
+<?php 
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
 </head>
 <body>
+    <?php require_once "../../components/preloader.php";
+    require_once "../components/header.php"; ?>
     <div class="main-container">
         <div class="sidebar">
             <h2>Settings</h2>
