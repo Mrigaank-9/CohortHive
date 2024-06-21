@@ -1,13 +1,13 @@
 <footer class="bg-dark text-white text-center text-lg-start mt-5">
     <div class="container p-5">
         <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0" style= "cursor: default;">
                 <h5 class="text-uppercase">About Cohort Hive</h5>
                 <p>
                 Cohort Hive is where developers unite and innovate together. Join us to create, share, and collaborate on exciting projects.
                 </p>
             </div>
-            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0" style= "cursor: default;">
                 <h5 class="text-uppercase">Quick Links</h5>
                 <ul class="list-unstyled mb-0">
                     <li>
@@ -21,7 +21,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style= "cursor: default;">
                 <h5 class="text-uppercase">Connect With Us</h5>
                 <ul class="list-unstyled d-flex flex-column justify-content-center">
                     <li>
@@ -36,7 +36,7 @@
                 </ul>
 
             </div>
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0" style= "cursor: default;">
                 <h5 class="text-uppercase">Contact Us</h5>
                 <ul class="list-unstyled mb-0">
                     <li>
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div class="text-center p-3 bg-secondary">
+    <div class="text-center p-3 bg-secondary" style= "cursor: default;">
         © 2024 Collab Hub
     </div>
 </footer>
