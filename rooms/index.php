@@ -94,8 +94,54 @@
                 </div>
                 
             </div>
-        </div>      
+        </div>
+        
+        
+
+        <!-- Timeline Part -->
+    <div class="timelinePart">
+          <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="background: rgba(255, 255, 255, 0.45);">
+                    <div class="card-body" >
+                      <div class="timelineHead">
+                        <h6 class="card-title">Timeline</h6>
+                        <div class="addToTimeline"><button class="btn btn-outline-secondary btn-lg btn-dark addToTimelineBtn" style="--bs-btn-font-size: 0.9rem; --bs-btn-color: white">Add To Timeline</button></div>
+                      </div>
+                        <div id="content">
+                            <ul class="timeline" >
+                                <li class="event" data-date="2:30 - 4:00pm">
+                                    <h3>Opening Ceremony</h3>
+                                    <h2>Saket Agarwal</h2>
+                                    <div class="deadline">By- <span>20/6/2024</span></div>
+                                    <p>Get ready for an exciting event, this will kick off in amazing fashion with MOP &amp; Busta Rhymes as an opening show.</p>
+                                    <div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div>
+                                </li>
+                                <li class="event" data-date="5:00 - 8:00pm">
+                                    <h3>Main Event</h3>
+                                    <h2>Rajeev Singh</h2>
+                                    <div class="deadline">By- <span>22/6/2024</span></div>
+                                    <p>This is where it all goes down. You will compete head to head with your friends and rivals. Get ready!</p>
+                                    <div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div>
+                                </li>
+                                <li class="event" data-date="8:30 - 9:30pm">
+                                    <h3>Closing Ceremony</h3>
+                                    <h2>Mrigaank Jaswal</h2>
+                                    <div class="deadline">By- <span>10/7/2024</span></div>
+                                    <p>See how is the victor and who are the losers. The big stage is where the winners bask in their own glory.</p>
+                                    <div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
     </div>
+    </div>
+
+    
     <div id="createAnnouncementid" class="createAnnouncement form hide">
     <button class="close-btn">&times;</button>
     <form method="POST">
@@ -120,6 +166,25 @@
     <div class="creator"><?php echo $announce_result['Name'];?></div>
     <div class="description"><?php echo $announce_result['Description'];?></div>
 </div>
+<!-- Settings Dialogue Box -->
+  <div id="settings-form" class="settingsForm form hide">
+      <button class="close-btn">&times;</button>
+      <form>
+          <h1>Settings</h1>
+          <div class="mb-3">
+            <label for="title" class="form-label">Change Room Name</label>
+            <input type="text" class="form-control" id="changeroomName" aria-describedby="emailHelp">
+          </div>
+          
+          <div class="mb-3">
+            <label for="deadline" class="form-label">Change Room Password</label>
+            <input type="password" class="form-control" id="changeroomPass" aria-describedby="emailHelp">
+        </div>
+        
+          <button type="submit" class="btn btn-outline-secondary btn-lg btn-dark" style="--bs-btn-font-size: 1.1rem; --bs-btn-color: white">Submit</button>
+          <button type="submit" class="btn btn-danger btn-outline btn-lg ms-5 mx-2" style="--bs-btn-font-size: 1.1rem; --bs-btn-color: white;">Delete Room</button>
+        </form>
+    </div>
 
 
   <?php require_once "../components/footer.php";?>

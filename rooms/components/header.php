@@ -42,7 +42,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="Settings" class="nav-link text-white d-flex align-items-center mx-2">
+                            <a href="#" id="settings-icon" class="nav-link text-white d-flex align-items-center mx-2">
                                 <i class="bi bi-gear me-2"></i><span class="d-lg-none">Settings</span>
                             </a>
                         </li>
@@ -77,3 +77,41 @@
             }
         }
     </style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Event listener for settings icon click
+        $('#settings-icon').click(function(e) {
+            e.preventDefault(); // Prevent default link behavior
+            
+            // Smooth scroll to top of the page
+            window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+            
+            // Display the form and apply styles
+            console.log("Inside settings form!");
+            $('#settings-form').removeClass("hide");
+            $('#settings-form').css({
+                'position': 'fixed',
+                'top': '50%',
+                'left': '50%',
+                'transform': 'translate(-50%, -50%)',
+                'background-color': 'rgba(255, 255, 255, 0.9)',
+                'z-index': '1000',
+                'padding': '20px',
+                'box-shadow': '0 0 10px rgba(0, 0, 0, 0.5)',
+                'width': '90vw',
+                'max-width': '500px'
+            });
+            $('.container').addClass("blur");
+            $('body').addClass("no-vertical-scroll");
+        });
+
+        // Event listener for close button click
+        $('#settings-form .close-btn').click(function() {
+            $('#settings-form').addClass("hide");
+            $('.container').removeClass("blur");
+            $('body').removeClass("no-vertical-scroll");
+        });
+    });
+</script>
