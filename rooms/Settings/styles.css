@@ -4,11 +4,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .blur {
@@ -40,6 +35,8 @@ body {
     align-self: center;
 }
 
+
+
 .hide {
     display: none;
 }
@@ -56,6 +53,8 @@ body {
     cursor: pointer;
 }
 
+
+
 .actionLink {
     text-decoration: none;
 }
@@ -66,25 +65,17 @@ body {
 
 .main-container {
     display: flex;
-    max-width: 800px;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100vh;
 }
 
-/* Sidebar Styles */
 .sidebar {
     width: 250px;
     background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     padding: 20px;
-    box-sizing: border-box;
-    flex-shrink: 0;
-    cursor: default;
+    /* background-color: #ddd6d6; */
 }
 
 .sidebar h2 {
@@ -105,6 +96,7 @@ body {
     margin-top: auto;
     padding: 10px;
     background-color: #1e1f23;
+    background-color: #1e1f23;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -114,21 +106,14 @@ body {
 .sidebar .back-button:hover {
     background-color: #1e1f23;
 }
-
-/* Content Styles */
+/* 
 .content {
     flex: 1;
     padding: 20px;
-    overflow-y: auto;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    cursor: default;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+} */
 
-}
-
-/* Section Styles */
 .section {
     display: none;
 }
@@ -137,7 +122,6 @@ body {
     display: block;
 }
 
-/* Form Styles */
 .form-group {
     margin-bottom: 15px;
 }
@@ -204,121 +188,22 @@ form button:hover {
 .close:focus {
     color: black;
 }
-
-/* Responsive Styles */
-@media (max-width: 1200px) {
-    .title {
-        font-size: 4rem;
-    }
-
-    .subTitle {
-        font-size: 2.5rem;
-    }
-
-    .sidebar {
-        width: 200px;
-    }
-
-    .content {
-        padding: 10px;
-    }
+.main-container {
+    max-width: 800px; /* Adjust the maximum width as per your design */
+    margin: 0 auto; /* Center the main-container horizontally */
+    display: flex;
+    height: 100vh; /* Maintain full height of the viewport */
+    justify-content: center; /* Center children horizontally */
+    align-items: center; /* Center children vertically */
 }
 
-@media (max-width: 992px) {
-    .title {
-        font-size: 3.5rem;
-    }
+/* Adjustments for sidebar and content remain unchanged */
 
-    .subTitle {
-        font-size: 2rem;
-    }
-
-    .sidebar {
-        width: 180px;
-    }
-
-    .content {
-        padding: 10px;
-    }
-}
-
-@media (max-width: 768px) {
-    .title {
-        font-size: 3rem;
-    }
-
-    .subTitle {
-        font-size: 1.5rem;
-    }
-
-    .sidebar {
-        width: 150px;
-        padding: 10px;
-    }
-
-    .sidebar ul li {
-        margin: 10px 0;
-    }
-
-    .sidebar .back-button {
-        padding: 8px;
-    }
-
-    .content {
-        padding: 10px;
-    }
-}
-
-@media (max-width: 576px) {
-    .title {
-        font-size: 2.5rem;
-    }
-
-    .subTitle {
-        font-size: 1.2rem;
-    }
-
-    .sidebar {
-        width: 120px;
-        padding: 5px;
-    }
-
-    .sidebar ul li {
-        margin: 5px 0;
-    }
-
-    .sidebar .back-button {
-        padding: 6px;
-    }
-
-    .content {
-        padding: 10px;
-    }
-}
-
-@media (max-width: 400px) {
-    .title {
-        font-size: 2rem;
-    }
-
-    .subTitle {
-        font-size: 1rem;
-    }
-
-    .sidebar {
-        width: 100px;
-        padding: 2px;
-    }
-
-    .sidebar ul li {
-        margin: 3px 0;
-    }
-
-    .sidebar .back-button {
-        padding: 4px;
-    }
-
-    .content {
-        padding: 10px;
-    }
+.content {
+    flex: 1;
+    height: 49.5vh; /* Adjust based on your design */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
 }
