@@ -6,11 +6,6 @@ function openSection(sectionId) {
     document.getElementById(sectionId).classList.add('active');
 }
 
-function goBack() {
-        window.location.href = '../index.php';
-}
-
-
 function copyID() {
     const roomId = document.getElementById('roomId').innerText;
     navigator.clipboard.writeText(roomId);

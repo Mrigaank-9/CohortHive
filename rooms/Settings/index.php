@@ -29,7 +29,6 @@ session_start();
                 <li onclick="openSection('changePassword')">Change Password</li>
                 <li onclick="openSection('changeName')">Change Name</li>
             </ul>
-            <button class="back-button" onclick="goBack()">← Back To Room</button>
         </div>
         <div class="content">
             <div id="welcome" class="section active">
