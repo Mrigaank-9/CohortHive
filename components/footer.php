@@ -2,13 +2,13 @@
     <div class="container p-5">
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">About Cohort Hive</h5>
-                <p>
+                <h5 class="text-uppercase" style="cursor: default">About Cohort Hive</h5>
+                <p style="cursor: default">
                 Cohort Hive is where developers unite and innovate together. Join us to create, share, and collaborate on exciting projects.
                 </p>
             </div>
             <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Quick Links</h5>
+                <h5 class="text-uppercase" style="cursor: default">Quick Links</h5>
                 <ul class="list-unstyled mb-0">
                     <li>
                         <a href="index.php" class="text-white text-decoration-none">Home</a>
@@ -22,7 +22,7 @@
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Connect With Us</h5>
+                <h5 class="text-uppercase" style="cursor: default">Connect With Us</h5>
                 <ul class="list-unstyled d-flex flex-column justify-content-center">
                     <li>
                         <a href="https://www.linkedin.com/in/rajeevsingh2412/" class="text-white text-decoration-none me-3"><i class="fab fa-linkedin"></i> Rajeev Singh</a>
@@ -37,8 +37,8 @@
 
             </div>
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Contact Us</h5>
-                <ul class="list-unstyled mb-0">
+                <h5 class="text-uppercase" style="cursor: default">Contact Us</h5>
+                <ul class="list-unstyled mb-0" style="cursor: default">
                     <li>
                         <i class="fas fa-envelope me-2"></i> cohorthive@gmail.com
                     </li>
