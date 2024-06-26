@@ -48,7 +48,7 @@
                         </li>
                         <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                             <li class="nav-item">
-                                <span class="nav-link text-white d-flex align-items-center" style="font-size: 1.25rem;">
+                                <span class="nav-link text-white d-flex align-items-center" style="font-size: 1.25rem; cursor:default">
                                     <i class="bi bi-person-circle mx-3 me-2"></i> <?php echo $_SESSION['username']; ?>
                                 </span>
                             </li>
