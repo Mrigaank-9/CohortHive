@@ -20,7 +20,6 @@
 
   <div class="blur"></div>
     <div class="container">
-        
         <div class="startSec">
             <div class="roomDet">
                 <div class="roomName"><?php echo  $_SESSION['room_name']; ?></div>
@@ -98,47 +97,47 @@
         
         
 
-        <!-- Timeline Part -->
-    <div class="timelinePart">
-          <div class="row">
-            <div class="col-md-12">
-                <div class="card" style="background: rgba(255, 255, 255, 0.45);">
-                    <div class="card-body" >
-                      <div class="timelineHead">
-                        <h6 class="card-title">Timeline</h6>
-                        <div class="addToTimeline"><button class="btn btn-outline-secondary btn-lg btn-dark addToTimelineBtn" style="--bs-btn-font-size: 0.9rem; --bs-btn-color: white">Add To Timeline</button></div>
-                      </div>
-                        <div id="content">
-                            <ul class="timeline" >
-                                <li class="event" data-date="2:30 - 4:00pm">
-                                    <h3>Opening Ceremony</h3>
-                                    <h2>Saket Agarwal</h2>
-                                    <div class="deadline">By- <span>20/6/2024</span></div>
-                                    <p>Get ready for an exciting event, this will kick off in amazing fashion with MOP &amp; Busta Rhymes as an opening show.</p>
-                                    <div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div>
-                                </li>
-                                <li class="event" data-date="5:00 - 8:00pm">
-                                    <h3>Main Event</h3>
-                                    <h2>Rajeev Singh</h2>
-                                    <div class="deadline">By- <span>22/6/2024</span></div>
-                                    <p>This is where it all goes down. You will compete head to head with your friends and rivals. Get ready!</p>
-                                    <div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div>
-                                </li>
-                                <li class="event" data-date="8:30 - 9:30pm">
-                                    <h3>Closing Ceremony</h3>
-                                    <h2>Mrigaank Jaswal</h2>
-                                    <div class="deadline">By- <span>10/7/2024</span></div>
-                                    <p>See how is the victor and who are the losers. The big stage is where the winners bask in their own glory.</p>
-                                    <div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div>
-                                </li>
-                            </ul>
+      <!-- Timeline Part -->
+      <div class="timelinePart">
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="card" style="background: rgba(255, 255, 255, 0.45);">
+                      <div class="card-body" >
+                        <div class="timelineHead">
+                          <h6 class="card-title">Timeline</h6>
+                          <div class="addToTimeline"><button class="btn btn-outline-secondary btn-lg btn-dark addToTimelineBtn" style="--bs-btn-font-size: 0.9rem; --bs-btn-color: white">Add To Timeline</button></div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
+                          <div id="content">
+                              <ul class="timeline" >
+                                  <li class="event" data-date="2:30 - 4:00pm">
+                                      <h3>Opening Ceremony</h3>
+                                      <h2>Saket Agarwal</h2>
+                                      <div class="deadline">By- <span>20/6/2024</span></div>
+                                      <p>Get ready for an exciting event, this will kick off in amazing fashion with MOP &amp; Busta Rhymes as an opening show.</p>
+                                      <div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div>
+                                  </li>
+                                  <li class="event" data-date="5:00 - 8:00pm">
+                                      <h3>Main Event</h3>
+                                      <h2>Rajeev Singh</h2>
+                                      <div class="deadline">By- <span>22/6/2024</span></div>
+                                      <p>This is where it all goes down. You will compete head to head with your friends and rivals. Get ready!</p>
+                                      <div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div>
+                                  </li>
+                                  <li class="event" data-date="8:30 - 9:30pm">
+                                      <h3>Closing Ceremony</h3>
+                                      <h2>Mrigaank Jaswal</h2>
+                                      <div class="deadline">By- <span>10/7/2024</span></div>
+                                      <p>See how is the victor and who are the losers. The big stage is where the winners bask in their own glory.</p>
+                                      <div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+      </div>
     </div>
 
     
@@ -165,6 +164,25 @@
     <div class="roomName" id="announcementTitle"></div>
     <div class="description" id="announcementDescription"></div>
 </div>
+<div id="addToTimeline" class="addToTimelineFrom form hide">
+    <button class="close-btn">&times;</button>
+    <form>
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="timelineTitle" aria-describedby="emailHelp">
+        </div>
+        
+        <div class="mb-3">
+          <label for="deadline" class="form-label">Deadline</label>
+          <input type="text" class="form-control" id="deadline" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="deadlineTextArea" class="form-label">Details</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+        <button type="submit" class="btn btn-outline-secondary btn-lg btn-dark" style="--bs-btn-font-size: 1.1rem; --bs-btn-color: white">Submit</button>
+      </form>
+  </div>
 <!-- Settings Dialogue Box -->
 <div id="settings-form" class="settingsForm form hide">
     <button class="close-btn" onclick="closeSettingsForm()">&times;</button>
