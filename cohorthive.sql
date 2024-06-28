@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2024 at 10:04 AM
+-- Generation Time: Jun 28, 2024 at 02:31 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -36,6 +36,13 @@ CREATE TABLE `announcements` (
   `Created_On` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `announcements`
+--
+
+INSERT INTO `announcements` (`ID`, `Room_ID`, `User_ID`, `Title`, `Description`, `Created_On`) VALUES
+(9, '7fbuv8ii2i1nt2zy9lca', 'iooab0fut365u9wi5uwd', 're', 'nchn oirhf cruh hcnrhc vhd hvnuthut hv vuohv iusfh ghuitjg hthf ut huitrfk hrugv t', '2024-06-28 14:08:24');
+
 -- --------------------------------------------------------
 
 --
@@ -55,13 +62,10 @@ CREATE TABLE `chat_users` (
 --
 
 INSERT INTO `chat_users` (`ID`, `User_ID`, `Name`, `Room_ID`, `Status`) VALUES
-(12, 'iooab0fut365u9wi5uwd', 'testid1', 'byspd950x8jutv1t1g7k', 'Active Now'),
-(13, 'iooab0fut365u9wi5uwd', 'testid1', '7fbuv8ii2i1nt2zy9lca', 'Active Now'),
-(14, 'iooab0fut365u9wi5uwd', 'testid1', 'ilunhpfcpvzi2ot10iuy', 'Active Now'),
-(15, 'x93i0w7kskeo1aes5tva', 'Test User 2', 'byspd950x8jutv1t1g7k', 'Active Now'),
-(16, 'o9x4xg6djpef0w9xqn3v', 'testid3', 'byspd950x8jutv1t1g7k', 'Active Now'),
-(17, 'iooab0fut365u9wi5uwd', 'testid1', 'bvpqcgp9ang6fotc2lnz', 'Active Now'),
-(18, 'x93i0w7kskeo1aes5tva', 'Test User 2', 'bvpqcgp9ang6fotc2lnz', 'Active Now');
+(13, 'iooab0fut365u9wi5uwd', 'testid1', '7fbuv8ii2i1nt2zy9lca', 'Offline'),
+(14, 'iooab0fut365u9wi5uwd', 'testid1', 'ilunhpfcpvzi2ot10iuy', 'Offline'),
+(17, 'iooab0fut365u9wi5uwd', 'testid1', 'bvpqcgp9ang6fotc2lnz', 'Offline'),
+(18, 'x93i0w7kskeo1aes5tva', 'Test User 2', 'bvpqcgp9ang6fotc2lnz', 'Offline');
 
 -- --------------------------------------------------------
 
@@ -80,7 +84,6 @@ CREATE TABLE `codetoroomid` (
 --
 
 INSERT INTO `codetoroomid` (`ID`, `Room_code`, `Room_ID`) VALUES
-(12, 'cf40uzlwcd', 'byspd950x8jutv1t1g7k'),
 (13, 'jl3wavil2b', '7fbuv8ii2i1nt2zy9lca'),
 (14, 'o6iuqh5wov', 'ilunhpfcpvzi2ot10iuy'),
 (15, 'eo7loo92ay', 'bvpqcgp9ang6fotc2lnz');
@@ -104,23 +107,7 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`ID`, `Room_ID`, `Incomming_ID`, `Outgoing_ID`, `Message`) VALUES
-(24, '', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'hlo'),
-(25, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'hlo'),
-(26, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'hlo'),
-(27, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'ye kya ha'),
-(28, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'klo'),
-(29, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'rjdf'),
-(30, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'hnji'),
-(31, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'good ediom'),
-(32, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'lo'),
-(33, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', ','),
-(34, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'lol'),
-(35, 'byspd950x8jutv1t1g7k', 'iooab0fut365u9wi5uwd', 'o9x4xg6djpef0w9xqn3v', 'hi'),
-(36, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'o9x4xg6djpef0w9xqn3v', 'hlo'),
-(37, 'byspd950x8jutv1t1g7k', 'o9x4xg6djpef0w9xqn3v', 'iooab0fut365u9wi5uwd', 'hlo'),
-(38, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'hnji'),
-(39, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'lol'),
-(40, 'byspd950x8jutv1t1g7k', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'l');
+(24, '', 'x93i0w7kskeo1aes5tva', 'iooab0fut365u9wi5uwd', 'hlo');
 
 -- --------------------------------------------------------
 
@@ -141,10 +128,25 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`ID`, `Name`, `Password`, `Owner_ID`, `Created_On`) VALUES
-('7fbuv8ii2i1nt2zy9lca', 'Test Room 2', 'testid2', 'iooab0fut365u9wi5uwd', '2024-06-18 21:27:22'),
+('7fbuv8ii2i1nt2zy9lca', 'NewTestRoom1', 'NewTestRoom1', 'iooab0fut365u9wi5uwd', '2024-06-18 21:27:22'),
 ('bvpqcgp9ang6fotc2lnz', 'Test Room 4', '1234567', 'iooab0fut365u9wi5uwd', '2024-06-19 10:55:58'),
-('byspd950x8jutv1t1g7k', 'Test Room 1', '1234567', 'iooab0fut365u9wi5uwd', '2024-06-18 21:26:43'),
 ('ilunhpfcpvzi2ot10iuy', 'Test Room 3', 'testid3', 'iooab0fut365u9wi5uwd', '2024-06-18 21:28:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timeline`
+--
+
+CREATE TABLE `timeline` (
+  `ID` int(11) NOT NULL,
+  `Owner_ID` varchar(20) NOT NULL,
+  `Room_ID` varchar(20) NOT NULL,
+  `Title` varchar(100) NOT NULL,
+  `Deadline` varchar(20) NOT NULL,
+  `Details` varchar(1200) NOT NULL,
+  `Created_on` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -187,7 +189,6 @@ CREATE TABLE `usertoroom` (
 --
 
 INSERT INTO `usertoroom` (`ID`, `User_ID`, `Room_ID`) VALUES
-(19, 'iooab0fut365u9wi5uwd', 'byspd950x8jutv1t1g7k'),
 (20, 'iooab0fut365u9wi5uwd', '7fbuv8ii2i1nt2zy9lca'),
 (21, 'iooab0fut365u9wi5uwd', 'ilunhpfcpvzi2ot10iuy'),
 (24, 'iooab0fut365u9wi5uwd', 'bvpqcgp9ang6fotc2lnz'),
@@ -228,6 +229,12 @@ ALTER TABLE `rooms`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `timeline`
+--
+ALTER TABLE `timeline`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -247,7 +254,7 @@ ALTER TABLE `usertoroom`
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `chat_users`
@@ -266,6 +273,12 @@ ALTER TABLE `codetoroomid`
 --
 ALTER TABLE `messages`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `timeline`
+--
+ALTER TABLE `timeline`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `usertoroom`

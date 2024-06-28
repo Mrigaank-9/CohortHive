@@ -2,6 +2,8 @@
 <style>
   #preloader {
     background: white url("images/preloader.gif") no-repeat center center;
+    background-size:contain;
+    background-repeat:no-repeat;
     width: 100%;
     height: 100%;
     position: fixed;
