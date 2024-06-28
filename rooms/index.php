@@ -80,7 +80,7 @@
                                echo '<th scope="row">' . $rowNumber . '</th>';
                                echo '<td>' . $title . '</td>';
                                echo '<td>' . $creator . '</td>';
-                               echo '<td><a href="" class="actionLink"><button class="btn btn-outline-secondary btn-lg btn-dark seeAnnouncements" style="--bs-btn-font-size: 0.8rem; --bs-btn-color: white" disabled style="cursor: not-allowed;">Read</button></a></td>';
+                               echo '<td><button class="btn btn-outline-secondary btn-lg btn-dark seeAnnouncements" style="--bs-btn-font-size: 0.8rem; --bs-btn-color: white" data-title="' . $title . '" data-description="' . $description . '" onclick="showAnnouncementDetails(this)">Read</button></td>';
                                echo '</tr>';
                                $rowNumber++;
                            }
@@ -162,9 +162,8 @@
 </div>
 <div id="viewAnnouncementid" class="viewAnnouncement form hide">
     <button class="close-btn">&times;</button>
-    <div class="roomName"><?php echo $announce_result['Title'];?></div>
-    <div class="creator"><?php echo $announce_result['Name'];?></div>
-    <div class="description"><?php echo $announce_result['Description'];?></div>
+    <div class="roomName" id="announcementTitle"></div>
+    <div class="description" id="announcementDescription"></div>
 </div>
 <!-- Settings Dialogue Box -->
   <div id="settings-form" class="settingsForm form hide">
@@ -193,4 +192,14 @@
     <script src="js/index.js"></script>
 </body>
 </html>
+
+<script>
+  function showAnnouncementDetails(button) {
+    var title = button.getAttribute('data-title');
+    var description = button.getAttribute('data-description');
+    document.getElementById('announcementTitle').textContent = title;
+    document.getElementById('announcementDescription').textContent = description;
+    document.getElementById('viewAnnouncementid').classList.remove('hide');
+}
+</script>
 
