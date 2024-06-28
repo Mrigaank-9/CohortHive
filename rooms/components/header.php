@@ -41,11 +41,13 @@
                                 <i class="bi bi-easel me-2"></i><span class="d-lg-none">Presentations</span>
                             </a>
                         </li>
+                        <?php if($_SESSION['ownerid']===$_SESSION['id']){ ?>
                         <li class="nav-item">
                             <a href="#" id="settings-icon" class="nav-link text-white d-flex align-items-center mx-2">
                                 <i class="bi bi-gear me-2"></i><span class="d-lg-none">Settings</span>
                             </a>
                         </li>
+                        <?php  } ?>
                         <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                             <li class="nav-item">
                                 <span class="nav-link text-white d-flex align-items-center" style="font-size: 1.25rem; cursor:default">

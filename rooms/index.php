@@ -166,24 +166,25 @@
     <div class="description" id="announcementDescription"></div>
 </div>
 <!-- Settings Dialogue Box -->
-  <div id="settings-form" class="settingsForm form hide">
-      <button class="close-btn">&times;</button>
-      <form>
-          <h1>Settings</h1>
-          <div class="mb-3">
-            <label for="title" class="form-label">Change Room Name</label>
-            <input type="text" class="form-control" id="changeroomName" aria-describedby="emailHelp">
-          </div>
-          
-          <div class="mb-3">
-            <label for="deadline" class="form-label">Change Room Password</label>
-            <input type="password" class="form-control" id="changeroomPass" aria-describedby="emailHelp">
+<div id="settings-form" class="settingsForm form hide">
+    <button class="close-btn" onclick="closeSettingsForm()">&times;</button>
+    <form method="POST" action="settings.php">
+        <h1>Settings</h1>
+        <div class="mb-3">
+            <label for="changeroomName" class="form-label">Change Room Name</label>
+            <input type="text" class="form-control" id="changeroomName" name="changeroomName" aria-describedby="emailHelp">
         </div>
         
-          <button type="submit" class="btn btn-outline-secondary btn-lg btn-dark" style="--bs-btn-font-size: 1.1rem; --bs-btn-color: white">Submit</button>
-          <button type="submit" class="btn btn-danger btn-outline btn-lg ms-5 mx-2" style="--bs-btn-font-size: 1.1rem; --bs-btn-color: white;">Delete Room</button>
-        </form>
-    </div>
+        <div class="mb-3">
+            <label for="changeroomPass" class="form-label">Change Room Password</label>
+            <input type="password" class="form-control" id="changeroomPass" name="changeroomPass" aria-describedby="emailHelp">
+        </div>
+        
+        <button type="submit" name="updateRoom" class="btn btn-outline-secondary btn-lg btn-dark" style="--bs-btn-font-size: 1.1rem; --bs-btn-color: white">Submit</button>
+        <button type="submit" name="deleteRoom" class="btn btn-danger btn-outline btn-lg ms-5 mx-2" style="--bs-btn-font-size: 1.1rem; --bs-btn-color: white;">Delete Room</button>
+    </form>
+</div>
+
 
 
   <?php require_once "../components/footer.php";?>

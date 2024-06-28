@@ -29,15 +29,16 @@ else{
     header("Location:../index.php");
 }
 if(isset($_SESSION['room_id'])){
-    $stmt=$conn->prepare("SELECT Name,Password FROM `rooms` WHERE ID=?");
+    $stmt=$conn->prepare("SELECT Name,Password,Owner_ID FROM `rooms` WHERE ID=?");
     $stmt->bind_param("s",$_SESSION['room_id']);
     $stmt->execute();
     $stmt->store_result();
-    $stmt->bind_result($room_name,$room_password);
+    $stmt->bind_result($room_name,$room_password,$ownerid);
     $stmt->fetch();
     $stmt->close();
     $_SESSION['room_name']=$room_name;
     $_SESSION['room_password']=$room_password;
+    $_SESSION['ownerid']=$ownerid;
 }
 
 
