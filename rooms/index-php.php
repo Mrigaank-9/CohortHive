@@ -71,6 +71,8 @@ $sql = "DELETE FROM `announcements`
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $_SESSION['room_id'] );
 $stmt->execute();
+$stmt->close();
+
 
 $users = [];
 while ($row = $result->fetch_assoc()) {
@@ -103,6 +105,18 @@ if (isset($_GET['remove_user_id'])) {
     // Redirect to avoid resubmission on refresh
     header("Location:rooms/index.php?room=".$_SESSION['room_code']);
 
+    exit;
+}
+if(isset($_GET['delete_timeline_id'])){
+    $id=$_GET['delete_timeline_id'];
+
+    $stmt=$conn->prepare("DELETE FROM `timeline` WHERE ID=?");
+    $stmt->bind_param("i",$id);
+    $stmt->execute();
+    $stmt->close();
+
+    // $roomcode=$_SESSION['room_code'];
+    header("Location:index.php?room=".$_SESSION['room_code']);
     exit;
 }
 if(isset($_POST['announce'])){
@@ -151,5 +165,51 @@ if (isset($_GET['view_announcement'])) {
   $announce_result=$query->get_result();
 }
 
-$conn->close();
+
+if (isset($_POST['submitTimeline'])) {
+  // Retrieve and sanitize form data
+  $title = isset($_POST['Title']) ? trim($_POST['Title']) : '';
+  $deadline = isset($_POST['Deadline']) ? trim($_POST['Deadline']) : '';
+  $details = isset($_POST['Details']) ? trim($_POST['Details']) : '';
+
+  $title = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
+  $deadline = htmlspecialchars($deadline, ENT_QUOTES, 'UTF-8');
+  $details = htmlspecialchars($details, ENT_QUOTES, 'UTF-8');
+
+  // Validate form data
+  if (empty($title) || empty($deadline) || empty($details)) {
+      echo "<script>alert('All fields are required.'); window.history.back();</script>";
+      exit();
+  }
+
+  // Convert the deadline to a date format suitable for the database
+  $deadlineDate = DateTime::createFromFormat('d/m/Y', $deadline);
+  if (!$deadlineDate) {
+      echo "<script>alert('Invalid deadline format. Please use DD/MM/YYYY.'); window.history.back();</script>";
+      exit();
+  }
+  $formattedDeadline = $deadlineDate->format('Y-m-d');
+
+  // Retrieve room ID and owner ID from session
+  $roomId = $_SESSION['room_id'];
+  $ownerId = $_SESSION['id']; // Assuming user_id is stored in session
+
+  // Insert timeline entry into the database
+  $sql = "INSERT INTO timeline (Room_ID, Owner_ID, Title, Deadline, Details) VALUES (?, ?, ?, ?, ?)";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("sssss", $roomId, $ownerId, $title, $formattedDeadline, $details);
+
+  if ($stmt->execute()) {
+      // Insert successful
+      $roomcode=$_SESSION['room_code'];
+      echo "<script>alert('Timeline entry added successfully.'); window.location.href ='index.php?room=$roomcode';</script>";
+      exit();
+  } else {
+      // Insert failed
+      echo "<script>alert('Error adding timeline entry: " . $stmt->error . "'); window.history.back();</script>";
+  }
+  $stmt->close();
+}
+
+
 ?>

@@ -70,6 +70,7 @@
                     </thead>
                     <tbody class="table-group-divider">
                       <?php
+                       
                        if ($result->num_rows > 0) {
                            while ($row = $result->fetch_assoc()) {
                                $title = htmlspecialchars($row['Title']);
@@ -109,27 +110,21 @@
                         </div>
                           <div id="content">
                               <ul class="timeline" >
-                                  <li class="event" data-date="2:30 - 4:00pm">
-                                      <h3>Opening Ceremony</h3>
-                                      <h2>Saket Agarwal</h2>
-                                      <div class="deadline">By- <span>20/6/2024</span></div>
-                                      <p>Get ready for an exciting event, this will kick off in amazing fashion with MOP &amp; Busta Rhymes as an opening show.</p>
-                                      <div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div>
+                                <?php 
+                                require_once "timeline.php";
+                                if(!empty($timelineEntries)){
+                                  foreach ($timelineEntries as $timeline_entry){ ?>
+                                  <li class="event" data-date="<?php echo htmlspecialchars($timeline_entry['Deadline']); ?>">
+                                      <h3><?php echo htmlspecialchars($timeline_entry['Title']) ?></h3>
+                                      <h2><?php  echo $timeline_entry['Owner_name']; ?></h2>
+                                      <div class="deadline">By- <span><?php  echo $timeline_entry['Deadline']; ?></span></div>
+                                      <p><?php echo  $timeline_entry['Details']; ?></p>
+                                      <a href="?delete_timeline_id=<?php echo htmlspecialchars($timeline_entry['ID']);?>"><div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div></a>
                                   </li>
-                                  <li class="event" data-date="5:00 - 8:00pm">
-                                      <h3>Main Event</h3>
-                                      <h2>Rajeev Singh</h2>
-                                      <div class="deadline">By- <span>22/6/2024</span></div>
-                                      <p>This is where it all goes down. You will compete head to head with your friends and rivals. Get ready!</p>
-                                      <div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div>
-                                  </li>
-                                  <li class="event" data-date="8:30 - 9:30pm">
-                                      <h3>Closing Ceremony</h3>
-                                      <h2>Mrigaank Jaswal</h2>
-                                      <div class="deadline">By- <span>10/7/2024</span></div>
-                                      <p>See how is the victor and who are the losers. The big stage is where the winners bask in their own glory.</p>
-                                      <div class="deleteicon"><i class="fa-regular fa-trash-can"></i></div>
-                                  </li>
+                                  <?php } ?>
+                                <?php } else{ ?>
+                                    <li> No Timeline Found</li>
+                                  <?php } ?>
                               </ul>
                           </div>
                       </div>
@@ -166,21 +161,21 @@
 </div>
 <div id="addToTimeline" class="addToTimelineFrom form hide">
     <button class="close-btn">&times;</button>
-    <form>
+    <form method="POST" action="#">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" id="timelineTitle" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="timelineTitle" aria-describedby="emailHelp" name="Title" placeholder="Title of Timeline">
         </div>
         
         <div class="mb-3">
           <label for="deadline" class="form-label">Deadline</label>
-          <input type="text" class="form-control" id="deadline" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="deadline" aria-describedby="emailHelp" name="Deadline" placeholder="DD/MM/YYYY">
       </div>
       <div class="mb-3">
         <label for="deadlineTextArea" class="form-label">Details</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Details" placeholder="Enter Details"></textarea>
       </div>
-        <button type="submit" class="btn btn-outline-secondary btn-lg btn-dark" style="--bs-btn-font-size: 1.1rem; --bs-btn-color: white">Submit</button>
+        <button type="submit" class="btn btn-outline-secondary btn-lg btn-dark" style="--bs-btn-font-size: 1.1rem; --bs-btn-color: white" name="submitTimeline">Submit</button>
       </form>
   </div>
 <!-- Settings Dialogue Box -->
