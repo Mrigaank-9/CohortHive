@@ -4,7 +4,7 @@
     <div class="container d-flex justify-content-between align-items-center">
         <a class="navbar-brand d-flex align-items-center" href="index.php">
             <img src="images/logo.png" alt="Logo" width="70vw" height="70vw" class="d-inline-block align-text-center">
-            <h1 class="mb-0 ms-2" style="font-size: 3.5vw">Cohort Hive</h1>
+            <!-- <h1 class="mb-0 ms-2" style="font-size: 3.5vw">Cohort Hive</h1> -->
         </a>
         <nav class="d-flex align-items-center">
             <!-- <a href="#" class="nav-link text-white me-3">Home</a>

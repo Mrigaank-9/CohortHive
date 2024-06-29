@@ -2,6 +2,8 @@
 if(session_status()===PHP_SESSION_NONE){
     session_start();
 }
+require_once "../../components/config.php";
+require_once "../components/UserAuthorization.php";
 $user_name=$_SESSION['name'];
 $room_id=$_SESSION['room_code'];
 
@@ -50,7 +52,7 @@ $room_id=$_SESSION['room_code'];
              </div>
  
  
-            <form id="lobby__form">
+            <form id="lobby__form" >
  
                  <div class="form__field__wrapper">
                      <label>Your Name</label>

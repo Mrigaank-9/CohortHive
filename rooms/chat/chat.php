@@ -3,6 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
 require_once "../../components/config.php";
+require_once "../components/UserAuthorization.php";
 
 // Redirect to login page if the user is not logged in
 if (!isset($_SESSION['id'])) {

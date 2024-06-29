@@ -1,4 +1,8 @@
-<?php require_once "php/index.php"; ?>
+<?php 
+require_once "../../components/config.php";
+require_once "../components/UserAuthorization.php";
+require_once "php/index.php";
+ ?>
 
 <?php require_once "header.php";?>
 <body>
